@@ -3,6 +3,8 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'org.asciidoctor.convert' version '1.5.8'
 	id 'java'
+	id 'idea'
+	id 'groovy'
 }
 
 group = 'mx.neftaly'
@@ -40,11 +42,14 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+	testCompile 'org.codehaus.groovy:groovy:2.5.6',
+			'org.spockframework:spock-core:1.3-groovy-2.5',
+			'org.spockframework:spock-spring:1.3-groovy-2.5'
+
 }
 
 test {
 	outputs.dir snippetsDir
-	useJUnitPlatform()
 }
 
 asciidoctor {
